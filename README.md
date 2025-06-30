@@ -90,6 +90,20 @@ shoppyglobe_backend/
 | PUT    | `/cart/:id`   | Update item quantity     |
 | DELETE | `/cart/:id`   | Remove item from cart    |
 
+**🔐 Requires JWT token in headers:**
+
+```
+Authorization: JWT <your_token_here>
+```
+
+---
+
+## 📘 Notes
+
+- Product quantity in cart cannot exceed available stock.
+- Email and password validation is enforced.
+- Works with **MongoDB Compass (local)**.
+
 ---
 
 ## 🧪 Running Locally
@@ -124,6 +138,18 @@ npm start
 ```
 
 Your backend will run on `http://localhost:5100`.
+
+---
+
+## 🌱 Seed Products from DummyJSON
+
+To insert real-looking products from [https://dummyjson.com/products](https://dummyjson.com/products):
+
+```bash
+npm run seed
+```
+
+This fetches 30 items and inserts them into my `products` collection.
 
 ---
 
