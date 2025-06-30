@@ -12,6 +12,8 @@
 - ✅ Product Listing (from MongoDB)
 - ✅ Add to Cart, Update Cart, Delete Cart Item
 - ✅ Proper error handling middleware
+- ✅ Seeding from external DummyJSON product API
+- ✅ MongoDB support (local Compass)
 
 ---
 
@@ -40,6 +42,7 @@ shoppyglobe_backend/
 ├── server.js            # Entry point, connects DB and starts server
 ├── app.js               # Sets up routes and middleware
 ├── package.json         # Project metadata & dependencies
+|__ seed.js              # Populate MongoDB Compass database with https://dummyjson.com/products automatically
 ```
 
 ---
@@ -94,7 +97,7 @@ shoppyglobe_backend/
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/yourusername/shoppyglobe.git
+git clone https://github.com/Arti2510/shoppyglobeProject.git
 cd shoppyglobe_backend
 ```
 
@@ -110,8 +113,8 @@ Create a `.env` file:
 
 ```env
 PORT=5100
-MONGO_URI=your_mongodb_connection_uri
-JWT_SECRET=your_jwt_secret
+MONGO_URI=mongodb://localhost:27017/shoppyglobe
+JWT_SECRET=mySecretKey
 ```
 
 ### 4. Start the Server
@@ -128,18 +131,3 @@ Your backend will run on `http://localhost:5100`.
 
 **Arti Maurya**  
 MCA Graduate | Full Stack Developer (Internshala Certified)
-
----
-
-## 📚 Future Improvements
-
-- Add product image upload
-- Build full React frontend
-- Admin product management panel
-- Payment gateway integration
-
----
-
-## 📄 License
-
-This project is open-source and free to use for learning and educational purposes.
