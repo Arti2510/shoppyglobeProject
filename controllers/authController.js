@@ -5,6 +5,16 @@ import jwt from 'jsonwebtoken';
 export const register = async (req, res, next) => {
   const { fullName, email, password } = req.body;
 
+  if (!fullName || fullName.trim() === '') {
+    return res.status(400).json({ error: 'Full name is required' });
+  }
+  if (!email || email.trim() === '') {
+    return res.status(400).json({ error: 'Email is required' });
+  }
+  if (!password || password.trim() === '') {
+    return res.status(400).json({ error: 'Password is required' });
+  }
+
   // ✅ Strong password check (same as schema)
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
   if (!passwordRegex.test(password)) {
@@ -40,13 +50,13 @@ export const login = async (req, res, next) => {
       return res.status(400).json({ error: 'Invalid email or password' });
     }
 
-    // 🔐 Compare password
+    // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ error: 'Invalid email or password' });
     }
 
-    // 🔑 Generate JWT token
+    // Generate JWT token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: '1d',
     });
