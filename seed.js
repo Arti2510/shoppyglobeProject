@@ -23,7 +23,7 @@ const seedProducts = async () => {
       stock: item.stock,
     }));
 
-    await Product.deleteMany(); // Clear old products
+    await Product.deleteMany();
     console.log("🧹 Cleared old products");
     await Product.insertMany(products);
     console.log("✅ Products inserted successfully");
